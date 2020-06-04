@@ -1,0 +1,11 @@
+
+<link rel="stylesheet" type="text/css" href="{{ static( 'sj/style.css') }}">
+
+<ul class="sitemap">
+{%- for item in sitemap.children recursive %}
+    <li><a href="{{  url('sj:subnetdetail', args=[item.name.id] ) }}">{{ item.name }}</a>
+    {%- if item.children -%}
+        <ul class="submenu">{{ loop(item.children) }}</ul>
+    {%- endif %}</li>
+{%- endfor %}
+</ul>

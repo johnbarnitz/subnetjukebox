@@ -1,0 +1,8 @@
+li a {
+    color: green;
+}
+div,
+details,
+summary {
+            margin-left: 2rem;
+        }

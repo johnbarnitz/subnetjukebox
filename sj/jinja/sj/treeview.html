@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Conditions</title>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ static( 'sj/style.css') }}">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- Inside the body 
+Only run on MS Edge
+    <script src="//cdn.jsdelivr.net/npm/details-polyfill@1/index.min.js" async></script>
+-->
+</head>
+<body>
+{%- for item in sitemap.children recursive %}
+    <details>
+    <summary><a href="{{  url('sj:subnetdetail', args=[item.name.id] ) }}">{{ item.name }}</a></summary>
+    
+    {%- if item.children -%}
+    {{ loop(item.children) }}
+    {%- endif %}
+    </details>
+{%- endfor %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+<h1>{{ subnet.cidrnotation }} </h1>
+
+{% if subnet.status == 0 %}
+<p>Unused</p>
+{% else %}
+<p>In Use</p>
+{% endif %}
+{% if subnet.version == 4 %}
+<p>IPv4</p>
+{% else %}
+<p>IPv6</p>
+{% endif %}
+<p>Created By:</p>
+<p>{{ subnet.created_by.name }} {{ subnet.created_by.email }} </p> 
