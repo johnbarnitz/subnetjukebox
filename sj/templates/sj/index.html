@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'sj/style.css' %}">
+
+{% if subnet_list %}
+	<ul>
+	{% for subnet in subnet_list %}
+		<li><a href="{% url 'sj:subnetdetail' subnet.id %}">{{ subnet.cidrnotation }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No Subnets Defined.</p>
+{% endif %}
