@@ -1,0 +1,30 @@
+{% include "webui/ui-top.html" %}
+{% if form.errors %}
+  {% for field in form %}
+    {% for error in field.errors %}
+      <div  role="alert" class="alert alert-error">{{ error }}</div>
+    {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+    <div role="alert" class="alert alert-error">{{ error }}</div>
+  {% endfor %}
+{% endif %}
+<br>
+<div class="grid grid-cols-6 gap-4">
+      <div class="col-end-7 ..." ><a class="btn" href = '/webui/{{name | lower }}/add'>Add {{name}}</a></div>
+</div>
+<div class="grid grid-cols-6  p-8">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+            <div class="col-span-3 py-1 {% cycle 'bg-teal-200' 'none' %}  ...">{{ object }}</div>
+            <div class="py-1 {% cycle 'bg-teal-200' 'none' %} ..."><a class="btn btn-xs btn-info" href = '/webui/{{name}}/{{ object.pk }}/'>Edit</a></div>
+            <div class="py-1 {% cycle 'bg-teal-200' 'none' %} ..."><a class="btn btn-xs btn-error" href = '/webui/{{name}}/{{ object.pk }}/delete'>Delete</a></div>
+
+    <!-- If object_list is empty  -->
+    {% empty %}
+            <div class="..."> No objects yet</div>
+    {% endfor %}
+</div>
+
+{% include "webui/ui-bottom.html" %}

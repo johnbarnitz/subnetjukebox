@@ -1,0 +1,23 @@
+
+{% for field in form %}
+    {% if "id_subnet-subnet" in field.id_for_label %}
+         <div class="..." >{{ field.label_tag }}</div>
+         <div class="col-span-2 ..." >   {{ field }}</div>
+    {% endif %}
+{% endfor %}
+
+<div class="col-span-3 divider divider-primary">Tag</div>
+{% for field in form %}
+    {% if "id_subnet-tag" in field.id_for_label %}
+         <div class="..." >{{ field.label_tag }}</div>
+         <div class="col-span-2 ..." >{{ field }}</div>
+    {% endif %}
+{% endfor %}
+
+<div class="col-span-3 divider divider-primary">Label</div>
+{% for field in form %}
+    {% if "id_subnet-label" in field.id_for_label %}
+         <div class="..." >{{ field.label_tag }}</div>
+        <div class="col-span-2 ..." >{{ field }}</div>
+    {% endif %}
+{% endfor %}

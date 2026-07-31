@@ -1,0 +1,19 @@
+{% include "webui/ui-top.html" %}
+<ul class="menu bg-base-200 w-56 rounded-box">
+
+{% for item, info in annotated_list %}
+    {% if info.open %}
+        <ul ><li>
+    {% else %}
+        </li><li>
+    {% endif %}
+
+    {{ item.address }}
+
+    {% for close in info.close %}
+        </li></ul>
+    {% endfor %}
+{% endfor %}
+</ul>
+
+{% include "webui/ui-bottom.html" %}

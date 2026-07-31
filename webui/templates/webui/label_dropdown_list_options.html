@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for lv in labels %}
+<option value="{{ lv.pk }}" data-type="{{ lv.type}}">{{ lv.name }}</option>
+{% endfor %}

@@ -1,0 +1,16 @@
+{% include "webui/ui-top.html" %}
+<form method="POST" enctype="multipart/form-data">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+   <div class="div1">
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    </div>
+    </p>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+{% include "webui/ui-bottom.html" %}
