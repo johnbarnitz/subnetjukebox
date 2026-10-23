@@ -1,0 +1,55 @@
+{% include "webui/ui-top.html" %}
+{% if form.errors %}
+  {% for field in form %}
+    {% for error in field.errors %}
+      <div  role="alert" class="alert alert-error">{{ error }}</div>
+    {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+    <div role="alert" class="alert alert-error">{{ error }}</div>
+  {% endfor %}
+{% endif %}
+    {% load static %}
+<p class="text-primary text-center text-2xl">Tag Form</p><br>
+<div class="flex justify-center ">
+    <!-- Form to submit the formset data -->
+    <form method="post" id="form" data-operation="create">
+        {% csrf_token %}
+      	<!-- Management form, necessary for formset to track the number of forms -->
+        {{ formset.management_form }}
+        <div class="grid grid-cols-3 gap-4 w-[640px] justify-center items-center">
+            {% for field in tagform %}
+                 <div class="..." >{{ field.label_tag }}</div>
+                 <div class="col-span-2 ..." >{{ field }}</div>
+            {% endfor %}
+        </div>
+        <br>
+        <!-- Container to hold all the form instances -->
+        <div id="formset">
+            {% for form in formset %}
+                {% for field in form %}
+
+                <div class="form-row grid grid-cols-3 gap-4 w-[640px] justify-center items-center">
+
+                        <div class="..." >{{ field.label_tag }}</div>
+                        <div class="col-span-2 ..." >{{ field }}</div>
+                        <div class="..." > <button type="button" class="remove-form btn btn-primary">Remove</button></div>
+
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <!-- Button to dynamically add a new form to the formset -->
+         <div class="grid grid-cols-3 gap-4 w-[640px] justify-center items-center">
+            <div class="col-span-2 ..." > <button type="button" id="add-form" class="btn btn-primary">Add a Value</button> </div>
+            <div class="..." > <button type="submit" class="btn btn-primary">Save</button ></div>
+         </div>
+
+    </form>
+</div>
+    <script src="{% static 'js/form.js' %}"></script>
+
+
+{% include "webui/ui-bottom.html" %}
+

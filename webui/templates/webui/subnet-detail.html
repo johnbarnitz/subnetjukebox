@@ -1,0 +1,48 @@
+{% include "webui/ui-top.html" %}
+<div class="grid grid-cols-3 gap-4">
+
+
+ <div class="..." >Name:</div>
+ <div class="col-span-2 ..." >   {{ item.name }}</div>
+ <div class="..." >Address:</div>
+    <div class="col-span-2 ..." >{{ item.address }}</div>
+ <div class="..." >Size: </div>
+    <div class="col-span-2 ..." >{{ item.cidr_available }}</div>
+ <div class="..." >Subnet: </div>
+    <div class="col-span-2 ..." >{{ item.is_subnet }}</div>
+ <div class="..." >Supernet:</div>
+    <div class="col-span-2 ..." >{{ item.supernet }}</div>
+ <div class="..." >IP Version: </div>
+    <div class="col-span-2 ..." >{{ item.ip_version }}</div>
+
+
+<div class="col-span-3 ..."></div>
+<div class="col-span-3 divider divider-primary">Tag</div>
+{% for t in item.tag.all %}
+     <div class="..." >{{ t.tag  }}</div>
+    <div class="col-span-2 ..." >{{t.value }}</div>
+{% endfor %}
+
+<div class="col-span-3 ..."></div>
+<div class="col-span-3 divider divider-primary">Labels</div>
+</div>
+    <form method="post">
+        {% csrf_token %}
+
+       {{ form }}
+<br>
+<div class="grid grid-cols-3 gap-4">
+        <div class="...">
+        <!-- Button to dynamically add a new form to the formset -->
+
+
+        <button type="submit" class="btn btn-primary">Save</button>
+</div>
+   </form>
+<div class = "...">
+        <button class="btn btn-primary"  onclick="window.location.href='/webui/home';"> Cancel
+          </button>
+</div>
+</div>
+
+{% include "webui/ui-bottom.html" %}

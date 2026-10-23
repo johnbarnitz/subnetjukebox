@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for tv in tags %}
+<option value="{{ tv.pk }}">{{ tv.name }}</option>
+{% endfor %}

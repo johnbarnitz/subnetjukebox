@@ -1,0 +1,63 @@
+{% include "webui/ui-top.html" %}
+{% if form.errors %}
+  {% for field in form %}
+    {% for error in field.errors %}
+      <div  role="alert" class="alert alert-error">{{ error }}</div>
+    {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+    <div role="alert" class="alert alert-error">{{ error }}</div>
+  {% endfor %}
+{% endif %}
+    {% load static %}
+<p class="text-primary text-center text-2xl">Label Edit</p><br>
+<div class="flex justify-center ">
+    <!-- Form to submit the formset data -->
+    <form method="post" id="form" data-operation="edit">
+        {% csrf_token %}
+      	<!-- Management form, necessary for formset to track the number of forms -->
+
+        {{ formset.management_form }}
+        <div class="form-row grid grid-cols-3 gap-4 pb-8">
+        {% for field in label_form %}
+            <div class="..." >{{ field.label_tag }} </div>
+            <div class="col-span-2 ..." >{{ field }} <button class="btn btn-primary btn-xs" id="enableBtn">Edit</button></div>
+        {% endfor %}
+            <div class="..." >Label Type </div>
+            <div class="col-span-2 ..." >{{ label_type }}</div>
+        </div>
+
+
+        <!-- Container to hold all the form instances -->
+        <div id="formset">
+            {% for form in formset %}
+                {% for field in form %}
+                <div class="form-row grid grid-cols-3 gap-4">
+                    <div class="..." >{{ field.label_tag }}</div>
+                    <div class="col-span-2 ..." >{{ field }}</div>
+                    <div class="pb-8 ..." ><button type="button" class="remove-form btn btn-primary btn-sm">Remove</button></div>
+                    <div class="pb-8 col-span-2 ..." > </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <!-- Button to dynamically add a new form to the formset -->
+
+        {% if formset %}
+            <button type="button" id="add-form" class="btn btn-primary">Add Value</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        {% endif %}
+    </form>
+</div>
+    <script src="{% static 'js/form.js' %}"></script>
+    <script>
+
+        $("#enableBtn").click(function (e) {
+            e.preventDefault();
+            $("#id_label-name").prop("disabled", false);
+        });
+
+    </script>
+
+{% include "webui/ui-bottom.html" %}

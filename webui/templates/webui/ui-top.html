@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html data-theme="light">
+<head>
+
+    <link href="/static/css/output.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/custom.css" rel="stylesheet" type="text/css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a>Labels</a></li>
+        <li><a>Tags</a></li>
+        <li>
+          <a>Subnet</a>
+          <ul class="p-2">
+            <li><a>Add</a></li>
+            <li><a>List</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="none">
+  <path d="M11 9 A23 23 0 0 1 40 9 V46 H11 Z" stroke="red" />
+  <path d="M12 10 A22 22 0 0 1 39 10 V46 H12 Z" stroke="pink" stroke-width="2"/>
+  <path d="M13 11 A21 21 0 0 1 38 11 V46 H13 Z" stroke="red" fill="burlywood" />
+  <path d="M10 8 A25 25 0 0 1 41 8 V46 H10 Z" stroke="black" />
+    <path d="M16 20 A6 5 0 0 1 35 20 Z" stroke="black"  fill="white"/>
+    <path d="M20 20 A3 2 0 0 1 31 20 " stroke="black" stroke-width="3"/>
+   <path d="M16 32 A6 5 0 0 0 35 32 Z" stroke="black" stroke-width="2" fill="lightgrey" />
+      <line x1="19" y1="23" x2="19" y2="29" stroke="black"  stroke-width="2"/>
+    <line x1="23" y1="23" x2="23" y2="29" stroke="black"  stroke-width="2"/>
+  <line x1="27" y1="23" x2="27" y2="29" stroke="black"  stroke-width="2"/>
+      <line x1="31" y1="23" x2="31" y2="29" stroke="black"  stroke-width="2"/>
+  <rect x="10" y="46" width="8" height="4" rx="8" fill="black"/>
+    <rect x="34" y="46" width="8" height="4" rx="8" fill="black"/>
+  <polygon points="25 8, 22 2, 29, 2" fill="black"/>
+</svg>
+
+    <a class="btn btn-ghost text-xl">Subnet Jukebox</a>
+  </div>
+
+  {% if user.is_authenticated %}
+  <div class="navbar-center hidden lg:flex">
+
+         <ul class="menu menu-horizontal px-1">
+      <li><a href="/webui/tag">Tags</a></li>
+      <li><a href="/webui/label">Labels</a></li>
+      <li>
+        <details>
+          <summary>Subnet</summary>
+          <ul class="p-2 bg-base-100 w-40 z-1">
+            <li><a href="/webui/subnet" >Add</a></li>
+            <li><a href="/webui/subnet-list">List</a></li>
+            <li><a href="/webui/filtered-tree">Tree View</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+   <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="btn" type="submit">Logout</button>
+    </form>
+
+  </div>
+  {% else %}
+    <div class="navbar-end">
+    <a class="btn" href="/webui/login" >Login</a>
+  </div>
+    {% endif %}
+</div>
+<br>

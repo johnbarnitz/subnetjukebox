@@ -1,0 +1,19 @@
+{% include "webui/ui-top.html" with user=user %}
+<p>
+    Create Networks and allocate subnets from within the defined networks. Define Tags on the networks so that subnets
+    can be defined by region or public/private or any other defined parameter. Labels can be assigned for easier identification
+    of the created subnet but do not affect the operation.
+</p>
+<p>
+    Create tags to pinpoint which networks will be used to assign a subnet. For example tags can be created by region
+    so that subnets can only be assigned from that region. Also a public/private tag could be used if a publically
+    accessable subnet was required. Tags can be combined so that for example New York would have both private and public
+    address space and a subnet could be allocated by specifying "New York" as a location tag and "public" as an Address
+    Space tag
+</p>
+<p>
+    Create Labels to identify and group Subnets for reporting or further identification. Labels don't affect assignment
+    like Tags. Examples of Labels would be a router interface the subnet will be assinged to or a customer id who will
+    be using the subnet.
+</p>
+{% include "webui/ui-bottom.html" %}

@@ -1,0 +1,6 @@
+<div class="grid grid-cols-3 gap-4">
+{% for field in form %}
+    <div class="..." >{{ field.label_tag }}</div>
+    <div class="col-span-2 ..." >{{ field }}</div>
+{% endfor %}
+</div>

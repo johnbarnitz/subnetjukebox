@@ -1,0 +1,24 @@
+{% include "webui/ui-top.html" %}
+<br>
+<div class="grid grid-cols-6 gap-4">
+
+      <div class="col-end-7 ..." ><button class="btn">Add Subnet</button></div>
+</div>
+
+    <!-- Iterate over object_list -->
+        <div class="grid grid-cols-6  p-8">
+    {% for object in object_list %}
+    <!-- Display Objects -->
+
+            <div class="col-span-3 py-1 {% cycle 'bg-teal-200' 'none' %}  ...">{{ object.address }}</div>
+            <div class="py-1 {% cycle 'bg-teal-200' 'none' %} ..."><a class="btn btn-xs btn-info" href = '/webui/subnet/{{ object.pk }}/'>Edit</a></li></div>
+            <div class="py-1 {% cycle 'bg-teal-200' 'none' %} ..."><a class="btn btn-xs btn-error" href = '/webui/subnet/{{ object.pk }}/delete'>Delete</a></div>
+
+    <!-- If object_list is empty  -->
+    {% empty %}
+            <div class="..."No objects yet</div>.
+    {% endfor %}
+        </div>
+
+
+{% include "webui/ui-bottom.html" %}

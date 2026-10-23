@@ -1,0 +1,33 @@
+{% include "webui/ui-top.html" %}
+{% if form.errors %}
+  {% for field in form %}
+    {% for error in field.errors %}
+      <div  role="alert" class="alert alert-error">{{ error }}</div>
+    {% endfor %}
+  {% endfor %}
+  {% for error in form.non_field_errors %}
+    <div role="alert" class="alert alert-error">{{ error }}</div>
+  {% endfor %}
+{% endif %}
+
+    <!-- Form to submit the formset data -->
+<div class="flex justify-center ">
+    <form method="post">
+        {% csrf_token %}
+
+<div class="grid grid-cols-3 gap-4 w-[640px]">
+    <div class="col-span-3"> <p class="text-primary text-center text-2xl ">Subnet Form</p></div>
+
+       {{ form }}
+       	<!-- Management form, necessary for formset to track the number of forms -->
+        <!-- Container to hold all the form instances -->
+<div class="col-span-3">
+        <!-- Button to dynamically add a new form to the formset -->
+        <button type="submit" class="btn btn-primary">Save</button>
+</div>
+</div>
+    </form>
+</div>
+
+
+{% include "webui/ui-bottom.html" %}

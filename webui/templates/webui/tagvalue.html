@@ -1,0 +1,17 @@
+{% include "webui/ui-top.html" %}
+<head>
+    <meta charset="UTF-8">
+    <title>Add a Value to a Tag</title>
+</head>
+<body>
+<form action="/webui/subnet/" method="post">
+    {% csrf_token %}
+    <div class="div1">
+    <table class="table">
+    {{ form.as_table }}
+    </table>
+    </div>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary" >
+</form>
+{% include "webui/ui-botton.html" %}
